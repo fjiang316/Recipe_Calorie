@@ -61,4 +61,5 @@ After data cleaning, the combined DataFrame looks like the following (only showi
 |          194.8 | snack       | 2013-08-02 00:00:00 |   2013 |
 
 ### Univariate Analysis
-With data cleaned for analyzation, we looked at the distribution of 
+With data cleaned for analyzation, we looked at the overall distribution of the calories of the recipes and the distribution of years in which the recipes has been commented on.
+
