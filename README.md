@@ -165,4 +165,4 @@ The plot below shows the empirical distribution of our test statistics in 1000 p
 From the figure above, we see that the change in distribution we get from our observed statistics is not likely coincidental, and this is also supported by our p-value from the test that is less than our significance level. Hence, we reject our null hypothesis.
 
 ## Conclusion:
-From the test conducted above, we conclude that our observed data in the dataset shows strong evidence against our null hypothesis that the difference in distribution of calorie preference in the two years are merely coincidental. Hence, there is a high 
+From the test conducted above, we conclude that our observed data in the dataset shows strong evidence against our null hypothesis that the difference in distribution of calorie preference in the two years are merely coincidental. Hence, we reject that there isn't an increase in people's preference to food with higher calories over the decade from 2008 to 2018. Although we cannot conclude the reason for this trend, the changes in the preference is highly likely a real trend over the last decade.
