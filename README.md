@@ -122,6 +122,10 @@ Alternative Hypothesis: The missingness of rating depend on minutes
 
 We created a new column indicating the missingness status of the `rating`, and shuffled this column for our permutation. Since `minutes` is numeric, we used the absolute mean difference of `minutes` when `rating` is and is not missing as our test statistics.
 
+Below are distributions of minutes with and without rating. From the histogram below, we notice there distribution is very similar. But we will continue to conduct a permutation test with mean as test statistic.
+
+<iframe src="figures/minute_miss_hist.html" width=800 height=600 frameBorder=0></iframe>
+
 Below shows the empirical distribution of our test statistics in 1000 permutations, the red line indicates the observed test statistics.
 
 <iframe src="figures/empi_dist_minute_rate.html" width=800 height=600 frameBorder=0></iframe>
@@ -137,6 +141,10 @@ Null Hypothesis: The missingness of rating does not depend on calories (#)
 Alternative Hypothesis: The missingness of rating depend on calories (#)
 
 Similar to the first test with minutes, we created a new column indicating the missingness of `rating` for each row record, and shuffled this column for permutation. Likewise, because `calories` is a numerical variable, we use the absolute mean difference of `calories` when `rating` is and is not missing as our test statistics.
+
+From the histogram, we notice that the distribution of calories when rating is missing slightly shift to the right of the distribution of calories when rating is not missing.
+
+<iframe src="figures/cal_dist_wi_wo.html" width=800 height=600 frameBorder=0></iframe>
 
 The plot below shows the empirical distribution of our test statistics in 1000 permutations, the red line indicates the observed test statistics.
 
@@ -154,7 +162,7 @@ Going back to our investigation topic, we are investigating whether it is true t
 
 **Alternative Hypothesis**: the recipes people use in 2018 has higher calories than recipes people use in 2008. (The observation is not coincidental, there's an actual trend proving a shift in preference.)
 
-**Test Statistics**: For the purpose of not letting numeric outliers impact the observational statistics, in our test, we are going to use `meal_type` to categorize different calorie levels and use this column as our variable. Because `meal_type` is categorical, in order to better compare its distribution in the two different years, we are going to use <u>Total Varience Distribution (TVD)</u> as our test statistics.
+**Test Statistics**: For the purpose of not letting numeric outliers impact the observational statistics, in our test, we are going to use `meal_type` to categorize different calorie levels and use this column as our variable. Because `meal_type` is categorical, in order to better compare its distribution in the two different years, we are going to use <u>Total Variation Distribution (TVD)</u> as our test statistics.
 
 **Significance Level**: To ensure the accuracy of our conclusion on the existence of changes in preference, we determined to use a significance level of 5% to increase accuracy of our randomized test result.
 
