@@ -63,3 +63,4 @@ After data cleaning, the combined DataFrame looks like the following (only showi
 ### Univariate Analysis
 With data cleaned for analyzation, we looked at the overall distribution of the calories of the recipes and the distribution of years in which the recipes has been commented on.
 
+<iframe src="figures/year_distri.html" width=800 height=600 frameBorder=0></iframe>
