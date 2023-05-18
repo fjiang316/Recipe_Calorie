@@ -148,3 +148,21 @@ From this graph and our test, we get a p-value that's significantly less than ou
 
 ---
 ## Hypothesis Testing
+Going back to our investigation topic, we are investigating whether it is true that there is an increasing trend of preference to food with higher calories in recent years of the last decade. So far, we have already seen an increasing trend in the usage of proportion of recipes with high calories from 2008 to 2018, but observation alone cannot be a good indicator as to whether this trend shows actual change in people's preference or is the trend merely coincidental. We determined that a good way to test the truthfulness of the trend is to take the distribution at the start and end of the decade for comparison. Hence, we are going to conduct a permutation test on the distribution of people's comment on food with different calorie levels in 2008 and the distribution in 2018 to see whether there is an actual increase in preference to higher calorie food or not.
+
+**Null Hypothesis**: the calories of recipes people commented on in 2008 and 2018 comes from the same population. (The observation is merely coincidental, there's no actual trend proving a shift in preference.)
+
+**Alternative Hypothesis**: the recipes people use in 2018 has higher calories than recipes people use in 2008. (The observation is not coincidental, there's an actual trend proving a shift in preference.)
+
+**Test Statistics**: For the purpose of not letting numeric outliers impact the observational statistics, in our test, we are going to use `meal_type` to categorize different calorie levels and use this column as our variable. Because `meal_type` is categorical, in order to better compare its distribution in the two different years, we are going to use <u>Total Varience Distribution (TVD)</u> as our test statistics.
+
+**Significance Level**: To ensure the accuracy of our conclusion on the existence of changes in preference, we determined to use a significance level of 1% to increase accuracy of our randomized test result.
+
+The plot below shows the empirical distribution of our test statistics in 1000 permutations, the red line indicates the observed test statistics.
+
+<iframe src="figures/permutation_test_dist.html" width=800 height=600 frameBorder=0></iframe>
+
+From the figure above, we see that the change in distribution we get from our observed statistics is not likely coincidental, and this is also supported by our p-value from the test that is less than our significance level. Hence, we reject our null hypothesis.
+
+## Conclusion:
+From the test conducted above, we conclude that our observed data in the dataset shows strong evidence against our null hypothesis that the difference in distribution of calorie preference in the two years are merely coincidental. Hence, there is a high 
