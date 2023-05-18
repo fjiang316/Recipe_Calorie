@@ -115,7 +115,7 @@ We noticed that there are a lot of missing values in the rating column, we wante
 
 We constructed permutation tests to determine the relationship. We have decided to test the dependency between the missingness of `rating` with two columns: `minutes` and `calories (#)`.
 
-#### 1. Rating and Minutes
+#### 1. Rating and Minutes (MCAR)
 Null Hypothesis: The missingness of rating does not depend on minutes
 
 Alternative Hypothesis: The missingness of rating depend on minutes
