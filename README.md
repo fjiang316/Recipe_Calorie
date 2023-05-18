@@ -8,8 +8,31 @@ The dataset used to investigate the topic can be find [here](https://dsc80.com/p
 Nowadays, with the increase in urbanization, people lives a faster paced lifestyle than before. With more pressure, many studies have shown that people tend to eat high calorie food that secrete more dopamine to gain happiness. This would raise serious health concern since diet with high calories usually causes severe health risk such as high cholesterol, heart disease, diabetes, etc. In order to find out whether people's increasing preference to food with higher calories is true in recent years, we will investigate on the corelation between years and calories of food using the above dataset.
 
 ## Introduction to the Datasets in this Study
-The first data set we are using contains the recipes information from 2008 to 2018, which has 83,782 rows. The other contains people's opinions to these recipes, which has 731,927 rows.
+The first data set we are using contains the information of 83782 recipes from 2008 to 2018 on food.com, with 10 columns recording the following information:
 
-We used `nutrition` column in the first dataset, it contains the information of calories, total fat, sugar, protein, saturated fat, and carbohydrates. Since we only focus on the calories, we seperated them into different columns and assigned in the data set named `calories (#)`, and only use the calories column for our study.
+|Column	                 |Description|
+|---                     |---        |
+|`'name'	`            |Recipe name|
+|`'id'`	                 |Recipe ID|
+|`'minutes'`	         |Minutes to prepare recipe|
+|`'contributor_id'`	     |User ID who submitted this recipe|
+|`'submitted'`	            | Date recipe was submitted|
+|`'tags'`	              |Food.com tags for recipe|
+|`'nutrition'`	          |Nutrition information in the form [calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein    (PDV), saturated fat (PDV), carbohydrates (PDV)]; PDV stands for “percentage of daily value”|
+|`'n_steps'`	          |Number of steps in recipe|
+|`'steps'`	              |Text for recipe steps, in order|
+|`'description'`	     | User-provided description|
 
-We used `date` column in the second dataset, it contains information about when people submitted their opinions. We extracted year from the submitted time, and assigned in the dataset named `year`.
+The other data set we used contains people's opinions to recipes on food.com, which is consists of 731,927 total reviews. It consists of 5 different columns as listed below:
+
+|Column|Description|
+|---|---|
+|`'user_id'`	|User ID|
+|`'recipe_id'`	|Recipe ID|
+|`'date'`	|Date of interaction|
+|`'rating'`	|Rating given|
+|`'review'`	|Review text|
+
+In our study, we mainly used two columns. We used `nutrition` column in the first dataset, which contains the information of calories, total fat, sugar, protein, saturated fat, and carbohydrates. Since we only focus on the calories, we seperated them into different columns and assigned the portion that indicates calories of each recipe as a new column called `calories (#)` (we will address this column as `calories` for future reference in this study), and only use the calories column for our study.
+
+We used `date` column in the second dataset, it contains information about when people submitted their opinions on the recipes, which is a relatively accurate reflection on people's preference over time. Since we are investigating the trend in terms of years, we extracted year from the `submitted` column, and assigned this as a new column named `year`.
