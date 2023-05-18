@@ -62,5 +62,15 @@ After data cleaning, the combined DataFrame looks like the following (only showi
 
 ### Univariate Analysis
 With data cleaned for analyzation, we looked at the overall distribution of the calories of the recipes and the distribution of years in which the recipes has been commented on.
+#### Distribution of Years
+Here is a histogram on the distribution of the the years when recipes are commented in our data set. We notice it has a right-skewed shape, with more comments being posted in earlier years than in recent years. This observation reminds us that in order to have a fair investigation on people's preference over years, we cannot compare based on the number of comments. Instead, we need to compare based on the proportion of comments on recipes in different calorie categories in each year to make fair comparison.
 
 <iframe src="https://github.com/fjiang316/Recipe_Calorie/tree/main/figures/year_distri.html" width=800 height=600 frameBorder=0></iframe>
+
+#### Distribution of Calories
+Here is a histogram on the distribution of the calories of all recipes in our data set. For the purpose of a more obvious observation on the pattern of the distribution, we zoomed in by selecting only a portion of the graph (calories from 0 to 4000), due to some extreme outliers. Even without the outliers in sight, there's a right-skewed pattern as well. This indicates that in order to not let the outliers affect the later observation of the correlation statistics, it would be better that we divide calories into categories and do analysis on the categorical distribution in each year for fair comparison.
+
+<iframe src="https://github.com/fjiang316/Recipe_Calorie/tree/main/figures/calorie_distri.html" width=800 height=600 frameBorder=0></iframe>
+
+
+### Bivariate Analysis
