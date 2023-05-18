@@ -156,13 +156,13 @@ Going back to our investigation topic, we are investigating whether it is true t
 
 **Test Statistics**: For the purpose of not letting numeric outliers impact the observational statistics, in our test, we are going to use `meal_type` to categorize different calorie levels and use this column as our variable. Because `meal_type` is categorical, in order to better compare its distribution in the two different years, we are going to use <u>Total Varience Distribution (TVD)</u> as our test statistics.
 
-**Significance Level**: To ensure the accuracy of our conclusion on the existence of changes in preference, we determined to use a significance level of 1% to increase accuracy of our randomized test result.
+**Significance Level**: To ensure the accuracy of our conclusion on the existence of changes in preference, we determined to use a significance level of 5% to increase accuracy of our randomized test result.
 
 The plot below shows the empirical distribution of our test statistics in 1000 permutations, the red line indicates the observed test statistics.
 
 <iframe src="figures/permutation_test_dist.html" width=800 height=600 frameBorder=0></iframe>
 
-From the figure above, we see that the change in distribution we get from our observed statistics is not likely coincidental, and this is also supported by our p-value from the test that is less than our significance level. Hence, we reject our null hypothesis.
+From the figure above, we see that the change in distribution we get from our observed statistics is not likely coincidental, and this is also supported by our p-value from the test that is less than our significance level. Hence, we **reject our null hypothesis**.
 
 ## Conclusion:
 From the test conducted above, we conclude that our observed data in the dataset shows strong evidence against our null hypothesis that the difference in distribution of calorie preference in the two years are merely coincidental. Hence, we reject that there isn't an increase in people's preference to food with higher calories over the decade from 2008 to 2018. Although we cannot conclude the reason for this trend, the changes in the preference is highly likely a real trend over the last decade.
