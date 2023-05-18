@@ -4,6 +4,7 @@
 This is a data science project on investigating how people's preference on the calories of the recipe has changed over years. 
 The dataset used to investigate the topic can be find [here](https://dsc80.com/project3/recipes-and-ratings/food.com), and is originally scrapped from [this source](https://cseweb.ucsd.edu/~jmcauley/pdfs/emnlp19c.pdf). This project is for DSC80 at UCSD.
 
+---
 ## Investigating Topic and Introduction
 Nowadays, with the increase in urbanization, people lives a faster paced lifestyle than before. With more pressure, many studies have shown that people tend to eat high calorie food that secrete more dopamine to gain happiness. This would raise serious health concern since diet with high calories usually causes severe health risk such as high cholesterol, heart disease, diabetes, etc. **In order to find out whether people's increasing preference to food with higher calories is true in recent years, we will investigate on the corelation between years and calories of food using the above dataset**.
 
@@ -39,7 +40,7 @@ We used `date` column in the second dataset, it contains information about when 
 
 Note: We also takes into account the `rating` column a several times since that could be an indicator of people's preference on a recipe.
 
-
+---
 ## Cleaning Data and Exploratory Data Analysis
 ### Data Cleaning
 In order to increase the readability and accuracy of our data, we followed the following steps to clean our DataFrame:
@@ -100,7 +101,7 @@ To get a visual representation of this statistics, we have converted it into the
 
 <iframe src="figures/pivot_line.html" width=800 height=600 frameBorder=0></iframe>
 
-
+---
 ## Assessment of Missingness
 ### NMAR Analysis
 One of the column in our dataset with missing values that is possibly NMAR is the `review` column. The reason for its missingness is most likely due to the reviewer's personal opinion to the recipes itself and not depend on other columns in our data set. People tend to write a lot in review to complain if they dislike the recipe, or they might write a lot if they really enjoy the recipe, but they might not write any review if they feel nothing special to the recipes and thus don't have much to comment on. The possibility that the missingness of review is because people don't feel any special things to leave a review on makes its missingness NMAR.
@@ -108,3 +109,42 @@ One of the column in our dataset with missing values that is possibly NMAR is th
 However, if we can generate another column that indicates people's satisfactory with either thumbs up, thumbs down, or somewhere in middle, there might be some dependency between this new column and the missingness of review, thus making its missingness MAR, because it is highly possible that people who select somewhere in middle for satisfactory are the one who do not submit a review.
 
 ### Missingness Dependency
+Since we are interested in people's preference of calaories' level over time, and we believe that their preference can be expressed through their rating of recipe, we decide to examine the `rating` column as well here.
+
+We noticed that there are a lot of missing values in the rating column, we wanted to know whether the missingness of rating depends on other columns or not.
+
+We constructed permutation tests to determine the relationship. We have decided to test the dependency between the missingness of `rating` with two columns: `minutes` and `calories (#)`.
+
+#### 1. Rating and Minutes
+Null Hypothesis: The missingness of rating does not depend on minutes
+
+Alternative Hypothesis: The missingness of rating depend on minutes
+
+We created a new column indicating the missingness status of the `rating`, and shuffled this column for our permutation. Since `minutes` is numeric, we used the absolute mean difference of `minutes` when `rating` is and is not missing as our test statistics.
+
+Below shows the empirical distribution of our test statistics in 1000 permutations, the red line indicates the observed test statistics.
+
+<iframe src="figures/empi_dist_minute_rate.html" width=800 height=600 frameBorder=0></iframe>
+
+From the graph above and out permutation test, we get a p-value that's greater than our significance level of 5%. So we fail to reject the null hypothesis.
+
+**Therefore, we conclude that it is highly possible that the missingness of `rating` *<u>does not</u>* depend on `minutes` column.**
+
+#### 2. Rating and Calories (MAR)
+
+Null Hypothesis: The missingness of rating does not depend on calories (#)
+
+Alternative Hypothesis: The missingness of rating depend on calories (#)
+
+Similar to the first test with minutes, we created a new column indicating the missingness of `rating` for each row record, and shuffled this column for permutation. Likewise, because `calories` is a numerical variable, we use the absolute mean difference of `calories` when `rating` is and is not missing as our test statistics.
+
+The plot below shows the empirical distribution of our test statistics in 1000 permutations, the red line indicates the observed test statistics.
+
+<iframe src="figures/empi_dist_cal_rate.html" width=800 height=600 frameBorder=0></iframe>
+
+From this graph and our test, we get a p-value that's significantly less than our significance level of 5%. So we reject the null hypothesis.
+
+**Hence, we conclude that the missingness of `rating` *<u>depends</u>* on the `calories` column.**
+
+---
+## Hypothesis Testing
