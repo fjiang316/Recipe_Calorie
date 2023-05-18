@@ -65,12 +65,34 @@ With data cleaned for analyzation, we looked at the overall distribution of the 
 #### Distribution of Years
 Here is a histogram on the distribution of the the years when recipes are commented in our data set. We notice it has a right-skewed shape, with more comments being posted in earlier years than in recent years. This observation reminds us that in order to have a fair investigation on people's preference over years, we cannot compare based on the number of comments. Instead, we need to compare based on the proportion of comments on recipes in different calorie categories in each year to make fair comparison.
 
-<iframe src="https://github.com/fjiang316/Recipe_Calorie/tree/main/figures/year_distri.html" width=800 height=600 frameBorder=0></iframe>
+<iframe src="figures/year_distri.html" width=800 height=600 frameBorder=0></iframe>
 
 #### Distribution of Calories
 Here is a histogram on the distribution of the calories of all recipes in our data set. For the purpose of a more obvious observation on the pattern of the distribution, we zoomed in by selecting only a portion of the graph (calories from 0 to 4000), due to some extreme outliers. Even without the outliers in sight, there's a right-skewed pattern as well. This indicates that in order to not let the outliers affect the later observation of the correlation statistics, it would be better that we divide calories into categories and do analysis on the categorical distribution in each year for fair comparison.
 
-<iframe src="https://github.com/fjiang316/Recipe_Calorie/tree/main/figures/calorie_distri.html" width=800 height=600 frameBorder=0></iframe>
+<iframe src="figures/calorie_distri.html" width=800 height=600 frameBorder=0></iframe>
 
 
 ### Bivariate Analysis
+To understand whether a correlation exist between two variables, it is also important to look at the relationship between the two variable. In this part, we will use a boxplot to illustrate the relationship between the calories of the recipes and people's preference over years (the proportion of counts for different calories levels in each years).
+
+<iframe src="figures/year_calorie_box.html" width=800 height=600 frameBorder=0></iframe>
+
+From the box plot above, if we look at the two lines indicating the 3rd quatile and the maximun, we notice a steady increasing trend in the level of calorie in recipes people reviewed over years. This tendency seems to suggest that there is a correlation between the years and the calories of food, which indicates people have this trend of favoring food with higher calories over year in our data set.
+
+
+### Interesting Aggregates
+So far, we have only use visual observation on plots to analyze the relationship between year and calories. In order to have a more reliable analysis, we constructed a pivot table that shows the distribution of conditional relative frequency of `meal_type` conditioned on every year. (Recall the `meal_type` column from part of cleaning the data)
+
+A sample pivot table is show below. According to pivot table, there's a gradual increase in the reviews on the proportion of high-calorie recipes in recent years and a decrease in the proportion of low-calorie recipes in recent years. This statistical observation agrees with our previous observation on the box plot.
+
+| meal_type    |     2008.0 |     2009.0 |    2010.0 |    2011.0 |    2012.0 |    2013.0 |    2014.0 |    2015.0 |    2016.0 |    2017.0 |    2018.0 |
+|:-------------|-----------:|-----------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|
+| snack        | 0.419618   | 0.411173   | 0.434028  | 0.422243  | 0.405003  | 0.385073  | 0.381717  | 0.364489  | 0.370481  | 0.383044  | 0.382773  |
+| breakfast    | 0.357484   | 0.349112   | 0.344009  | 0.353171  | 0.347421  | 0.351531  | 0.358347  | 0.344017  | 0.347993  | 0.343531  | 0.326648  |
+| lunch        | 0.135695   | 0.135584   | 0.126102  | 0.124747  | 0.139967  | 0.142635  | 0.130763  | 0.139166  | 0.136765  | 0.134455  | 0.134757  |
+| dinner       | 0.0458329  | 0.0541099  | 0.0489045 | 0.0491315 | 0.058631  | 0.0600833 | 0.0647059 | 0.0708019 | 0.0649675 | 0.0591556 | 0.0688212 |
+| family meal  | 0.00867281 | 0.00912846 | 0.0101975 | 0.0104499 | 0.0101565 | 0.0128586 | 0.0116057 | 0.0182793 | 0.015992  | 0.0142244 | 0.0135623 |
+| jumbo meal   | 0.0134523  | 0.0184634  | 0.0156884 | 0.0152808 | 0.0153607 | 0.0199057 | 0.0251192 | 0.0279064 | 0.025987  | 0.0258523 | 0.0298658 |
+| holiday meal | 0.0192448  | 0.0224287  | 0.0210711 | 0.0249769 | 0.0234608 | 0.0279138 | 0.0277424 | 0.03534   | 0.0378144 | 0.0397381 | 0.0435724 |
+
