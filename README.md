@@ -96,3 +96,15 @@ A sample pivot table is show below. According to pivot table, there's a gradual 
 | jumbo meal   | 0.0134523  | 0.0184634  | 0.0156884 | 0.0152808 | 0.0153607 | 0.0199057 | 0.0251192 | 0.0279064 | 0.025987  | 0.0258523 | 0.0298658 |
 | holiday meal | 0.0192448  | 0.0224287  | 0.0210711 | 0.0249769 | 0.0234608 | 0.0279138 | 0.0277424 | 0.03534   | 0.0378144 | 0.0397381 | 0.0435724 |
 
+To get a visual representation of this statistics, we have converted it into the below line plot. There's an observable shift in the slope of the lines for each year that "flattened" over years. This indicates the increase in proportion of high calorie recipes in recent years.
+
+<iframe src="figures/pivot_line.html" width=800 height=600 frameBorder=0></iframe>
+
+
+## Assessment of Missingness
+### NMAR Analysis
+One of the column in our dataset with missing values that is possibly NMAR is the `review` column. The reason for its missingness is most likely due to the reviewer's personal opinion to the recipes itself and not depend on other columns in our data set. People tend to write a lot in review to complain if they dislike the recipe, or they might write a lot if they really enjoy the recipe, but they might not write any review if they feel nothing special to the recipes and thus don't have much to comment on. The possibility that the missingness of review is because people don't feel any special things to leave a review on makes its missingness NMAR.
+
+However, if we can generate another column that indicates people's satisfactory with either thumbs up, thumbs down, or somewhere in middle, there might be some dependency between this new column and the missingness of review, thus making its missingness MAR, because it is highly possible that people who select somewhere in middle for satisfactory are the one who do not submit a review.
+
+### Missingness Dependency
