@@ -64,12 +64,16 @@ After data cleaning, the combined DataFrame looks like the following (only showi
 ### Univariate Analysis
 With data cleaned for analyzation, we looked at the overall distribution of the calories of the recipes and the distribution of years in which the recipes has been commented on.
 #### Distribution of Years
-Here is a histogram on the distribution of the the years when recipes are commented in our data set. We notice it has a right-skewed shape, with more comments being posted in earlier years than in recent years. This observation reminds us that in order to have a fair investigation on people's preference over years, we cannot compare based on the number of comments. Instead, we need to compare based on the proportion of comments on recipes in different calorie categories in each year to make fair comparison.
+Here is a histogram on the distribution of the the years when recipes are commented in our data set. 
+
+We notice it has a right-skewed shape, with more comments being posted in earlier years than in recent years. This observation reminds us that in order to have a fair investigation on people's preference over years, we cannot compare based on the number of comments; instead, we need to compare based on the proportion of comments on recipes in different calorie categories in each year to make fair comparison.
 
 <iframe src="figures/year_distri.html" width=800 height=600 frameBorder=0></iframe>
 
 #### Distribution of Calories
-Here is a histogram on the distribution of the calories of all recipes in our data set. For the purpose of a more obvious observation on the pattern of the distribution, we zoomed in by selecting only a portion of the graph (calories from 0 to 4000), due to some extreme outliers. Even without the outliers in sight, there's a right-skewed pattern as well. This indicates that in order to not let the outliers affect the later observation of the correlation statistics, it would be better that we divide calories into categories and do analysis on the categorical distribution in each year for fair comparison.
+Here is a histogram on the distribution of the calories of all recipes in our data set. 
+
+For the purpose of a more obvious observation on the pattern of the distribution, we zoomed in by selecting only a portion of the graph (calories from 0 to 4000), due to some extreme outliers. Even without the outliers in sight, there's a right-skewed pattern, which indicates that in order to not let the outliers affect the later observation of the correlation statistics, it would be better that we divide calories into categories and do analysis on the categorical distribution in each year for fair comparison.
 
 <iframe src="figures/calorie_distri.html" width=800 height=600 frameBorder=0></iframe>
 
@@ -97,7 +101,9 @@ A sample pivot table is show below. According to pivot table, there's a gradual 
 | jumbo meal   | 0.0134523  | 0.0184634  | 0.0156884 | 0.0152808 | 0.0153607 | 0.0199057 | 0.0251192 | 0.0279064 | 0.025987  | 0.0258523 | 0.0298658 |
 | holiday meal | 0.0192448  | 0.0224287  | 0.0210711 | 0.0249769 | 0.0234608 | 0.0279138 | 0.0277424 | 0.03534   | 0.0378144 | 0.0397381 | 0.0435724 |
 
-To get a visual representation of this statistics, we have converted it into the below line plot. There's an observable shift in the slope of the lines for each year that "flattened" over years. This indicates the increase in proportion of high calorie recipes in recent years.
+To get a visual representation of this statistics, we have converted it into the below line plot. 
+
+There's an observable shift in the position of the lines every year from 2008 to 2018 that the slope "flattened" over years. For instance, earlier years such as 2008 and 2010 has higher proportion in low calorie recipes than later years such as 2018 and 2016, but for high calorie recipes, recent years like 2018 has higher proportion than earlier years.
 
 <iframe src="figures/pivot_line.html" width=800 height=600 frameBorder=0></iframe>
 
@@ -130,7 +136,7 @@ Below shows the empirical distribution of our test statistics in 1000 permutatio
 
 <iframe src="figures/empi_dist_minute_rate.html" width=800 height=600 frameBorder=0></iframe>
 
-From the graph above and out permutation test, we get a p-value that's greater than our significance level of 5%. So we fail to reject the null hypothesis.
+From the graph above and out permutation test, we get a p-value that's greater than our significance level of 5%, so we fail to reject the null hypothesis.
 
 **Therefore, we conclude that it is highly possible that the missingness of `rating` *<u>does not</u>* depend on `minutes` column.**
 
@@ -142,7 +148,7 @@ Alternative Hypothesis: The missingness of rating depend on calories (#)
 
 Similar to the first test with minutes, we created a new column indicating the missingness of `rating` for each row record, and shuffled this column for permutation. Likewise, because `calories` is a numerical variable, we use the absolute mean difference of `calories` when `rating` is and is not missing as our test statistics.
 
-From the histogram, we notice that the distribution of calories when rating is missing slightly shift to the right of the distribution of calories when rating is not missing.
+From the histogram, we notice that the distribution of calories when rating is missing is slightly to the right of the distribution of calories when rating is not missing.
 
 <iframe src="figures/cal_dist_wi_wo.html" width=800 height=600 frameBorder=0></iframe>
 
@@ -150,12 +156,13 @@ The plot below shows the empirical distribution of our test statistics in 1000 p
 
 <iframe src="figures/empi_dist_cal_rate.html" width=800 height=600 frameBorder=0></iframe>
 
-From this graph and our test, we get a p-value that's significantly less than our significance level of 5%. So we reject the null hypothesis.
+From this graph and our test, we get a p-value that's significantly less than our significance level of 5%, so we reject the null hypothesis.
 
 **Hence, we conclude that the missingness of `rating` *<u>depends</u>* on the `calories` column.**
 
 ---
 ## Hypothesis Testing
+### Permutation Test
 Going back to our investigation topic, we are investigating whether it is true that there is an increasing trend of preference to food with higher calories in recent years of the last decade. So far, we have already seen an increasing trend in the usage of proportion of recipes with high calories from 2008 to 2018, but observation alone cannot be a good indicator as to whether this trend shows actual change in people's preference or is the trend merely coincidental. We determined that a good way to test the truthfulness of the trend is to take the distribution at the start and end of the decade for comparison. Hence, we are going to conduct a permutation test on the distribution of people's comment on food with different calorie levels in 2008 and the distribution in 2018 to see whether there is an actual increase in preference to higher calorie food or not.
 
 **Null Hypothesis**: the calories of recipes people commented on in 2008 and 2018 comes from the same population. (The observation is merely coincidental, there's no actual trend proving a shift in preference.)
@@ -170,7 +177,7 @@ The plot below shows the empirical distribution of our test statistics in 1000 p
 
 <iframe src="figures/permutation_test_dist.html" width=800 height=600 frameBorder=0></iframe>
 
-From the figure above, we see that the change in distribution we get from our observed statistics is not likely coincidental, and this is also supported by our p-value from the test that is less than our significance level. Hence, we **reject our null hypothesis**.
+From the figure above, we see that the change in distribution we get from our observed statistics is not likely coincidental, and this is also supported by our p-value of 0 from the test that is less than our significance level of 0.05. Hence, we **reject our null hypothesis**.
 
 ## Conclusion:
 From the test conducted above, we conclude that our observed data in the dataset shows strong evidence against our null hypothesis that the difference in distribution of calorie preference in the two years are merely coincidental. Hence, we reject that there isn't an increase in people's preference to food with higher calories over the decade from 2008 to 2018. Although we cannot conclude the reason for this trend, the changes in the preference is highly likely a real trend over the last decade.
